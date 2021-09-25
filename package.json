@@ -24,6 +24,9 @@
     "url": "https://github.com/excid3/esbuild-rails/issues"
   },
   "homepage": "https://github.com/excid3/esbuild-rails#readme",
+  "np": {
+    "tests": false
+  },
   "peerDependencies": {
     "esbuild": "*"
   },
