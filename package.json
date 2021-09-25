@@ -1,0 +1,33 @@
+{
+  "name": "esbuild-rails",
+  "version": "1.0.0",
+  "description": "Esbuild plugin for Rails applications",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/excid3/esbuild-rails.git"
+  },
+  "keywords": [
+    "esbuild",
+    "rails",
+    "stimulus",
+    "hotwire",
+    "import",
+    "glob"
+  ],
+  "author": "Chris Oliver <excid3@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/excid3/esbuild-rails/issues"
+  },
+  "homepage": "https://github.com/excid3/esbuild-rails#readme",
+  "peerDependencies": {
+    "esbuild": "*"
+  },
+  "dependencies": {
+    "glob": "^7.2.0"
+  }
+}
