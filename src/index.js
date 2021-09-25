@@ -1,3 +1,4 @@
+const path = require('path')
 const glob = require('glob').sync
 
 // This plugin adds support for globs like "./**/*" to import an entire directory
