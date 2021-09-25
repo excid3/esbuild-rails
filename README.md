@@ -29,7 +29,7 @@ require("esbuild").build({
 }).catch(() => process.exit(1));
 ```
 
-## Usage
+## 🧑‍💻 Usage
 
 Import a folder using globs:
 
