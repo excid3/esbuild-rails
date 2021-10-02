@@ -17,7 +17,8 @@ npm i esbuild-rails
 Add the plugin to `esbuild.config.js`
 
 ```javascript
-const rails = require('esbuild-rails');
+const path = require('path')
+const rails = require('esbuild-rails')
 
 require("esbuild").build({
   entryPoints: ["application.js"],
@@ -26,7 +27,7 @@ require("esbuild").build({
   absWorkingDir: path.join(process.cwd(), "app/javascript"),
   watch: watch,
   plugins: [rails()],
-}).catch(() => process.exit(1));
+}).catch(() => process.exit(1))
 ```
 
 ## 🧑‍💻 Usage
