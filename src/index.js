@@ -30,6 +30,14 @@ const railsPlugin = (options = {}) => ({
         })
       ).sort().filter(path => path.endsWith('.js'));
 
+      const controllerNames = files
+          .map((module) => module
+            .replace("./", "")
+            .replace("_controller.js", "")
+            .replace(/\//g, "--")
+            .replace(/_/g, '-')
+          )
+
       const importerCode = `
         ${files
           .map((module, index) => `import * as module${index} from '${module}'`)
@@ -40,6 +48,9 @@ const railsPlugin = (options = {}) => ({
         export default modules;
         export const filenames = [${files
           .map((module) => `'${module}'`)
+          .join(',')}]
+        export const namesWithModule = [${controllerNames
+          .map((module, index) => `{name: '${module}', module: module${index}}`)
           .join(',')}]
       `;
 

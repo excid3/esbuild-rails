@@ -44,14 +44,9 @@ import { Application } from "@hotwired/stimulus"
 const application = Application.start()
 
 import * as controllers from "./**/*_controller.js"
-for (let i=0; i < controllers.filenames.length; i++) {
-  const name = controllers.filenames[i]
-    .replace("./", "")
-    .replace("_controller.js", "")
-    .replace(/\//g, "--")
-    .replace(/_/g, '-')
-  application.register(name, controllers.default[i].default)
-}
+controllers.namesWithModule.forEach((controller) => {
+  application.register(controller.name, controller.module.default)
+})
 ```
 
 Import ActionCable channels:
