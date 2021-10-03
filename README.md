@@ -25,7 +25,7 @@ require("esbuild").build({
   bundle: true,
   outdir: path.join(process.cwd(), "app/assets/builds"),
   absWorkingDir: path.join(process.cwd(), "app/javascript"),
-  watch: watch,
+  watch: process.argv.includes("--watch"),
   plugins: [rails()],
 }).catch(() => process.exit(1))
 ```
@@ -44,8 +44,8 @@ Import Stimulus controllers and register them:
 import { Application } from "@hotwired/stimulus"
 const application = Application.start()
 
-import * as controllers from "./**/*_controller.js"
-controllers.namesWithModule.forEach((controller) => {
+import controllers from "./**/*_controller.js"
+controllers.forEach((controller) => {
   application.register(controller.name, controller.module.default)
 })
 ```
