@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/esbuild-rails.svg)](https://badge.fury.io/js/esbuild-rails)
+
 # 🛤 esbuild-rails
 
 Rails plugin for Esbuild for easy imports of Stimulus controllers, ActionCable channels, and other Javascript.
