@@ -25,13 +25,20 @@ const path = require('path')
 const rails = require('esbuild-rails')
 
 require("esbuild").build({
-  entryPoints: ["application.js"],
+  entryPoints: ["application.js", "event_form.jsx"],
   bundle: true,
   outdir: path.join(process.cwd(), "app/assets/builds"),
   absWorkingDir: path.join(process.cwd(), "app/javascript"),
   watch: process.argv.includes("--watch"),
   plugins: [rails()],
-}).catch(() => process.exit(1))
+  minify: process.env.NODE_ENV === 'production',
+  define: { 
+    "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV),
+  },
+}).catch((error) => {
+  process.stderr.write(error.stderr)
+  process.exit(1)
+})
 ```
 
 ## 🧑‍💻 Usage
