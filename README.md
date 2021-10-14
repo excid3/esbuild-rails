@@ -42,7 +42,7 @@ Import a folder using globs:
 import "./src/**/*"
 ```
 
-Import Stimulus controllers and register them:
+#### Import Stimulus controllers and register them:
 
 ```javascript
 import { Application } from "@hotwired/stimulus"
@@ -54,11 +54,38 @@ controllers.forEach((controller) => {
 })
 ```
 
-Import ActionCable channels:
+#### Import ActionCable channels:
 
 ```javascript
 import "./channels/**/*_channel.js"
 ```
+
+#### jQuery with esbuild:
+
+```bash
+yarn add jquery jquery-ui
+```
+
+```javascript
+// app/javascript/jquery.js
+import jquery from 'jquery';
+window.jQuery = jquery;
+window.$ = jquery;
+```
+
+```javascript
+//app/javascript/application.js
+import "./jquery"
+import "jquery-ui/jquery-ui"
+
+$(function() {
+  $(".datepicker").datepicker();
+});
+```
+
+If you're curious why this works: `import` in Javascript are hoisted, meaning that `import` is run _before_ the other code regardless of where in the file they are. Setting the `window` variables actually gets executed AFTER all the imports. https://stackoverflow.com/questions/29329662/are-es6-module-imports-hoisted
+
+By splitting out the jQuery import and window assignments into an import, we can guarantee that code runs first before importing jquery-ui. 👍
 
 ## 🙏 Contributing
 
