@@ -83,9 +83,7 @@ $(function() {
 });
 ```
 
-If you're curious why this works: `import` in Javascript are hoisted, meaning that `import` is run _before_ the other code regardless of where in the file they are. Setting the `window` variables actually gets executed AFTER all the imports. https://stackoverflow.com/questions/29329662/are-es6-module-imports-hoisted
-
-By splitting out the jQuery import and window assignments into an import, we can guarantee that code runs first before importing jquery-ui. 👍
+Why does this work? `import` in Javascript is hoisted, meaning that `import` is run _before_ the other code regardless of where in the file they are. By splitting the jQuery setup into a separate `import`, we can guarantee that code runs first before jquery-ui initializes. Read more [here](https://exploringjs.com/es6/ch_modules.html#_imports-are-hoisted).
 
 ## 🙏 Contributing
 
