@@ -63,7 +63,7 @@ import "./channels/**/*_channel.js"
 #### jQuery with esbuild:
 
 ```bash
-yarn add jquery jquery-ui
+yarn add jquery
 ```
 
 ```javascript
@@ -76,14 +76,9 @@ window.$ = jquery;
 ```javascript
 //app/javascript/application.js
 import "./jquery"
-import "jquery-ui/jquery-ui"
-
-$(function() {
-  $(".datepicker").datepicker();
-});
 ```
 
-Why does this work? `import` in Javascript is hoisted, meaning that `import` is run _before_ the other code regardless of where in the file they are. By splitting the jQuery setup into a separate `import`, we can guarantee that code runs first before jquery-ui initializes. Read more [here](https://exploringjs.com/es6/ch_modules.html#_imports-are-hoisted).
+Why does this work? `import` in Javascript is hoisted, meaning that `import` is run _before_ the other code regardless of where in the file they are. By splitting the jQuery setup into a separate `import`, we can guarantee that code runs first. Read more [here](https://exploringjs.com/es6/ch_modules.html#_imports-are-hoisted).
 
 ## 🙏 Contributing
 
