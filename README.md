@@ -34,7 +34,12 @@ require("esbuild").build({
 }).catch(() => process.exit(1))
 ```
 
-Add or Change build script in `package.json`
+Running on npm > `7.1` ?  run command to add build script.
+
+```sh
+npm set-script build "node esbuild.config.js"
+```
+or add it manually  in `package.json`
 ```javascript
 "scripts": {
   "build": "node esbuild.config.js"
