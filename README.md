@@ -34,6 +34,13 @@ require("esbuild").build({
 }).catch(() => process.exit(1))
 ```
 
+Add or Change build script in `package.json`
+```javascript
+"scripts": {
+  "build": "node esbuild.config.js"
+}
+```
+
 ## 🧑‍💻 Usage
 
 Import a folder using globs:
