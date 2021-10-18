@@ -80,6 +80,23 @@ import "./jquery"
 
 Why does this work? `import` in Javascript is hoisted, meaning that `import` is run _before_ the other code regardless of where in the file they are. By splitting the jQuery setup into a separate `import`, we can guarantee that code runs first. Read more [here](https://exploringjs.com/es6/ch_modules.html#_imports-are-hoisted).
 
+#### jQuery UI with esbuild:
+
+Follow the jQuery steps above.
+
+Download [jQuery UI custom build](https://jqueryui.com/download/) and add it to `app/javascript/jquery-ui.js`
+
+```javascript
+import "./jquery-ui"
+
+$(function() {
+  $(document).tooltip()
+  $("#dialog").dialog()
+})
+```
+
+A custom build is required because jQueryUI does not support ESM. 
+
 ## 🙏 Contributing
 
 If you have an issue you'd like to submit, please do so using the issue tracker in GitHub. In order for us to help you in the best way possible, please be as detailed as you can.
