@@ -33,7 +33,7 @@ const railsPlugin = (options = { matcher: /.+\..+/ }) => ({
       const controllerNames = files
           .map((module) => module
             .replace("./", "")
-            .replace("_controller.js", "")
+            .replace(/_controller.[j|t]s$/, "")
             .replace(/\//g, "--")
             .replace(/_/g, '-')
           )
