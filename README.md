@@ -2,7 +2,7 @@
 
 # 🛤 esbuild-rails
 
-Rails plugin for Esbuild for easy imports of Stimulus controllers, ActionCable channels, and other Javascript.
+Esbuild Rails plugin for easy imports of Stimulus controllers, ActionCable channels, and other Javascript.
 
 This package is designed to be used with [jsbundling-rails](https://github.com/rails/jsbundling-rails).
 
