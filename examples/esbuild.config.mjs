@@ -74,7 +74,7 @@ async function buildAndReload() {
 
       if (path.includes("javascript")) {
         try {
-          await setTimeout(20)
+          await new Promise((resolve) => setTimeout(resolve, 20))
           await context.rebuild()
           console.log("[reload] build succeeded")
         } catch (error) {
