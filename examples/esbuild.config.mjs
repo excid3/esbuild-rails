@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-
+// Requires esbuild 0.17+
+//
 // Esbuild is configured with 3 modes:
 //
 // `yarn build` - Build JavaScript and exit
