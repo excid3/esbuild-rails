@@ -1,5 +1,5 @@
 const path = require('path')
-const glob = require('glob').sync
+const { globSync } = require('glob')
 
 // This plugin adds support for globs like "./**/*" to import an entire directory
 // We can use this to import arbitrary files or Stimulus controllers and ActionCable channels
@@ -24,15 +24,21 @@ const railsPlugin = (options = { matcher: /.+\..+/ }) => ({
     });
 
     build.onLoad({ filter: /.*/, namespace: 'rails' }, async (args) => {
-      const files = (
-        glob(args.pluginData.path, {
+      // Get a list of all files in the directory
+      // [ 'accounts_controller.js', ... ]
+      let files = (
+        globSync(args.pluginData.path, {
           cwd: args.pluginData.resolveDir,
         })
-      ).sort().filter(path => options.matcher.test(path));
+      )
 
+      // Filter to match the import
+      files = files.sort().filter(path => options.matcher.test(path));
+
+      // Transform to controller names
+      // [ 'accounts', ... ]
       const controllerNames = files
           .map((module) => module
-            .replace("./", "")
             .replace(/_controller.[j|t]s$/, "")
             .replace(/\//g, "--")
             .replace(/_/g, '-')
@@ -40,7 +46,7 @@ const railsPlugin = (options = { matcher: /.+\..+/ }) => ({
 
       const importerCode = `
         ${files
-          .map((module, index) => `import * as module${index} from '${module}'`)
+          .map((module, index) => `import * as module${index} from './${module}'`)
           .join(';')}
         const modules = [${controllerNames
           .map((module, index) => `{name: '${module}', module: module${index}, filename: '${files[index]}'}`)
