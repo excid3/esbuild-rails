@@ -18,7 +18,7 @@ yarn add esbuild-rails
 npm i esbuild-rails
 ```
 
-Add the plugin to `esbuild.config.js`
+Copy `examples/esbuild.config.mjs` to your git repository or use the following example config:
 
 ```javascript
 const path = require('path')
@@ -43,7 +43,7 @@ or add it manually  in `package.json`
 
 ```javascript
 "scripts": {
-  "build": "node esbuild.config.js"
+  "build": "node esbuild.config.mjs"
 }
 ```
 
