@@ -65,7 +65,28 @@ import controllers from "./**/*_controller.js"
 controllers.forEach((controller) => {
   application.register(controller.name, controller.module.default)
 })
+
+// For view components
+// import componentControllers from '../components/**/*_controller.js';
+// ...
+
 ```
+
+Controller identifiers will be the name of the file + the parent folder except in `controllers/` folder:
+
+```
+app
+├── components
+│   ├── pref_component.html.erb
+│   ├── pref_component.rb
+│   └── pref_component_controller.js // identifier 'components--pref-component'
+└── javascript
+    └── controllers
+        ├── modal_controller.js // identifier 'modal'
+        └─- admin
+            └── status_controller.js // identifier 'admin--status'
+```
+
 
 #### Import ActionCable channels:
 

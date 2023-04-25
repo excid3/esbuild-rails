@@ -40,6 +40,8 @@ const railsPlugin = (options = { matcher: /.+\..+/ }) => ({
       const controllerNames = files
           .map((module) => module
             .replace(/_controller.[j|t]s$/, "")
+            .replace(/^controllers\//, "") // do not namespace controllers in controllers directory
+            .replace(/\.\.\//, "") // do not use parent folder anotation for controller name
             .replace(/\//g, "--")
             .replace(/_/g, '-')
           )
