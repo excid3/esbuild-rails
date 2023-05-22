@@ -31,6 +31,6 @@
     "esbuild": "*"
   },
   "dependencies": {
-    "glob": "^9.0.0"
+    "glob": "^10.0.0"
   }
 }
