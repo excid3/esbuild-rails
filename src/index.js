@@ -1,5 +1,5 @@
 const path = require('path')
-const { globSync } = require('glob')
+const fg = require('fast-glob')
 
 // This plugin adds support for globs like "./**/*" to import an entire directory
 // We can use this to import arbitrary files or Stimulus controllers and ActionCable channels
@@ -27,7 +27,7 @@ const railsPlugin = (options = { matcher: /.+\..+/ }) => ({
       // Get a list of all files in the directory
       // [ 'accounts_controller.js', ... ]
       let files = (
-        globSync(args.pluginData.path, {
+        fg.globSync(args.pluginData.path, {
           cwd: args.pluginData.resolveDir,
         })
       )
