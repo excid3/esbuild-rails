@@ -67,6 +67,30 @@ controllers.forEach((controller) => {
 })
 ```
 
+#### Importing Stimulus controllers from parent folders (ViewComponents, etc)
+
+To import Stimulus controllers from parents in other locations, create an `index.js` in the folder that registers controllers and import the `index.js` location.
+
+For example, we can import Stimulus controller for ViewComponents by creating an `app/components/index.js` file and importing that in your main Stimulus controllers index.
+
+```javascript
+// app/javascript/controllers/index.js
+import { application } from "./application"
+
+// Import app/components/index.js
+import "../../components"
+```
+
+```javascript
+// app/components/index.js
+import { application } from "../javascript/controllers/application"
+
+import controllers from "./**/*_controller.js"
+controllers.forEach((controller) => {
+  application.register(controller.name, controller.module.default)
+})
+```
+
 #### Import ActionCable channels:
 
 ```javascript
