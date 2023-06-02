@@ -27,7 +27,7 @@ const railsPlugin = (options = { matcher: /.+\..+/ }) => ({
       // Get a list of all files in the directory
       // [ 'accounts_controller.js', ... ]
       let files = (
-        fg.globSync(args.pluginData.path, {
+        fg.sync(args.pluginData.path, {
           cwd: args.pluginData.resolveDir,
         })
       )
