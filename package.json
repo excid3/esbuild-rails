@@ -31,6 +31,6 @@
     "esbuild": "*"
   },
   "dependencies": {
-    "glob": "^10.0.0"
+    "fast-glob": "^3.2.12"
   }
 }
