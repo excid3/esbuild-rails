@@ -1,6 +1,17 @@
 const path = require('path')
 const fg = require('fast-glob')
 
+// Transform filenames to controller names
+// [ './admin/hello_world_controller.js', ... ]
+// [ 'admin--hello-world', ... ]
+function convertFilenameToControllerName(filename) {
+  return filename
+    .replace(/^\.\//, "") // Remove ./ prefix
+    .replace(/_controller.[j|t]s$/, "") // Strip _controller.js extension
+    .replace(/\//g, "--") // Replace folders with -- namespaces
+    .replace(/_/g, '-') //
+}
+
 // This plugin adds support for globs like "./**/*" to import an entire directory
 // We can use this to import arbitrary files or Stimulus controllers and ActionCable channels
 const railsPlugin = (options = { matcher: /.+\..+/ }) => ({
@@ -25,7 +36,6 @@ const railsPlugin = (options = { matcher: /.+\..+/ }) => ({
 
     build.onLoad({ filter: /.*/, namespace: 'rails' }, async (args) => {
       // Get a list of all files in the directory
-      // [ 'accounts_controller.js', ... ]
       let files = (
         fg.sync(args.pluginData.path, {
           cwd: args.pluginData.resolveDir,
@@ -34,15 +44,7 @@ const railsPlugin = (options = { matcher: /.+\..+/ }) => ({
 
       // Filter to match the import
       files = files.sort().filter(path => options.matcher.test(path));
-
-      // Transform to controller names
-      // [ 'accounts', ... ]
-      const controllerNames = files
-          .map((module) => module
-            .replace(/_controller.[j|t]s$/, "")
-            .replace(/\//g, "--")
-            .replace(/_/g, '-')
-          )
+      const controllerNames = files.map(convertFilenameToControllerName)
 
       const importerCode = `
         ${files
