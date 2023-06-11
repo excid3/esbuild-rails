@@ -36,7 +36,7 @@ require("esbuild").build({
 Use npm to add it as the build script (requires npm `>= 7.1`)
 
 ```sh
-npm set-script build "node esbuild.config.js"
+npm pkg set scripts.build="node esbuild.config.js"
 ```
 
 or add it manually  in `package.json`
