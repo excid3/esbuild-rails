@@ -18,20 +18,7 @@ yarn add esbuild-rails
 npm i esbuild-rails
 ```
 
-Copy `examples/esbuild.config.mjs` to your git repository or use the following example config:
-
-```javascript
-const path = require('path')
-const rails = require('esbuild-rails')
-
-require("esbuild").build({
-  entryPoints: ["application.js"],
-  bundle: true,
-  outdir: path.join(process.cwd(), "app/assets/builds"),
-  absWorkingDir: path.join(process.cwd(), "app/javascript"),
-  plugins: [rails()],
-}).catch(() => process.exit(1))
-```
+Copy [`examples/esbuild.config.mjs`](examples/esbuild.config.mjs) to your git repository.
 
 Use npm to add it as the build script (requires npm `>= 7.1`)
 
