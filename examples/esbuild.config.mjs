@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Requires esbuild 0.17+
+// Requires esbuild 0.17+ & chokidar v4+
 //
 // Esbuild is configured with 3 modes:
 //
@@ -22,9 +22,9 @@ const entryPoints = [
   "application.js"
 ]
 const watchDirectories = [
-  "./app/javascript/**/*.js",
-  "./app/views/**/*.html.erb",
-  "./app/assets/builds/**/*.css", // Wait for cssbundling changes
+  "./app/javascript",
+  "./app/views",
+  "./app/assets/builds", // Wait for cssbundling changes
 ]
 const config = {
   absWorkingDir: path.join(process.cwd(), "app/javascript"),
