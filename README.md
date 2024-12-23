@@ -11,11 +11,11 @@ This package is designed to be used with [jsbundling-rails](https://github.com/r
 Install with npm or yarn
 
 ```bash
-yarn add esbuild-rails
+yarn add esbuild-rails chodikar
 ```
 
 ```bash
-npm i esbuild-rails
+npm i esbuild-rails chodikar
 ```
 
 Copy [`examples/esbuild.config.mjs`](examples/esbuild.config.mjs) to your git repository.
@@ -23,7 +23,7 @@ Copy [`examples/esbuild.config.mjs`](examples/esbuild.config.mjs) to your git re
 Use npm to add it as the build script (requires npm `>= 7.1`)
 
 ```sh
-npm pkg set scripts.build="node esbuild.config.js"
+npm pkg set scripts.build="node esbuild.config.mjs"
 ```
 
 or add it manually  in `package.json`
