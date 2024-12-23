@@ -11,11 +11,11 @@ This package is designed to be used with [jsbundling-rails](https://github.com/r
 Install with npm or yarn
 
 ```bash
-yarn add esbuild-rails chodikar
+yarn add esbuild-rails chokidar
 ```
 
 ```bash
-npm i esbuild-rails chodikar
+npm i esbuild-rails chokidar
 ```
 
 Copy [`examples/esbuild.config.mjs`](examples/esbuild.config.mjs) to your git repository.
