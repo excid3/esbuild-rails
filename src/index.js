@@ -42,8 +42,18 @@ const railsPlugin = (options = { matcher: /.+\..+/ }) => ({
         })
       )
 
+      const watchedDirs = new Set();
+      watchedDirs.add(args.pluginData.resolveDir);
+
       // Filter to match the import
       files = files.sort().filter(path => options.matcher.test(path));
+      
+      // Add directories of matched files to watchedDirs
+      files.forEach(file => {
+        const dir = path.dirname(path.resolve(args.pluginData.resolveDir, file));
+        watchedDirs.add(dir);
+      });
+
       const controllerNames = files.map(convertFilenameToControllerName)
 
       const importerCode = `
@@ -56,7 +66,7 @@ const railsPlugin = (options = { matcher: /.+\..+/ }) => ({
         export default modules;
       `;
 
-      return { contents: importerCode, resolveDir: args.pluginData.resolveDir };
+      return { contents: importerCode, resolveDir: args.pluginData.resolveDir, watchDirs: Array.from(watchedDirs) };
     });
   },
 });
